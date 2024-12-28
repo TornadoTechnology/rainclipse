@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Utilities", "hype
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.GraphicsApi", "hypercube\src\Hypercube.GraphicsApi\Hypercube.GraphicsApi.csproj", "{D2F9CC73-5246-42BB-ACA1-D6BFB3089F75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Graphics", "hypercube\src\Hypercube.Graphics\Hypercube.Graphics.csproj", "{C03170C9-67D8-4A5E-8C4E-0BCB4E646795}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,7 @@ Global
 		{2E464B74-DD2F-488C-A056-1A9AAB30F6C2} = {503A3A90-2FD0-4C64-BAF6-6AC2FAE9D5C0}
 		{366F802D-A79A-4155-B0BA-3DAF7D7416EC} = {503A3A90-2FD0-4C64-BAF6-6AC2FAE9D5C0}
 		{D2F9CC73-5246-42BB-ACA1-D6BFB3089F75} = {503A3A90-2FD0-4C64-BAF6-6AC2FAE9D5C0}
+		{C03170C9-67D8-4A5E-8C4E-0BCB4E646795} = {503A3A90-2FD0-4C64-BAF6-6AC2FAE9D5C0}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{ABCE23EE-715D-412F-AEAB-401A1F7E1725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -51,5 +54,9 @@ Global
 		{D2F9CC73-5246-42BB-ACA1-D6BFB3089F75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2F9CC73-5246-42BB-ACA1-D6BFB3089F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2F9CC73-5246-42BB-ACA1-D6BFB3089F75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C03170C9-67D8-4A5E-8C4E-0BCB4E646795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C03170C9-67D8-4A5E-8C4E-0BCB4E646795}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C03170C9-67D8-4A5E-8C4E-0BCB4E646795}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C03170C9-67D8-4A5E-8C4E-0BCB4E646795}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
