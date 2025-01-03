@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+
+        <ApplicationIcon>icon.ico</ApplicationIcon>
+        <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="$(SolutionDir)../hypercube/libs/**" Link="%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+        <None Include="$(SolutionDir)../hypercube/resources/**" Link="resources/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\hypercube\src\Hypercube.Analyzers\Hypercube.Analyzers.csproj" />
+      <ProjectReference Include="..\..\hypercube\src\Hypercube.Core\Hypercube.Core.csproj" />
+      <ProjectReference Include="..\..\hypercube\src\Hypercube.Mathematics\Hypercube.Mathematics.csproj" />
+    </ItemGroup>
+
+</Project>

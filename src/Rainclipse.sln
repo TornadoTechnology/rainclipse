@@ -2,19 +2,19 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{503A3A90-2FD0-4C64-BAF6-6AC2FAE9D5C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Mathematics", "hypercube\src\Hypercube.Mathematics\Hypercube.Mathematics.csproj", "{ABCE23EE-715D-412F-AEAB-401A1F7E1725}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Mathematics", "..\hypercube\src\Hypercube.Mathematics\Hypercube.Mathematics.csproj", "{ABCE23EE-715D-412F-AEAB-401A1F7E1725}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Core", "hypercube\src\Hypercube.Core\Hypercube.Core.csproj", "{87BC2483-833F-40A8-BA22-375D30D0A241}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Core", "..\hypercube\src\Hypercube.Core\Hypercube.Core.csproj", "{87BC2483-833F-40A8-BA22-375D30D0A241}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Analyzers", "hypercube\src\Hypercube.Analyzers\Hypercube.Analyzers.csproj", "{2E464B74-DD2F-488C-A056-1A9AAB30F6C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Analyzers", "..\hypercube\src\Hypercube.Analyzers\Hypercube.Analyzers.csproj", "{2E464B74-DD2F-488C-A056-1A9AAB30F6C2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rainclipse", "Rainclipse\Rainclipse.csproj", "{2EC25C3F-C630-4C94-B3D2-F28E2866CE35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Utilities", "hypercube\src\Hypercube.Utilities\Hypercube.Utilities.csproj", "{366F802D-A79A-4155-B0BA-3DAF7D7416EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Utilities", "..\hypercube\src\Hypercube.Utilities\Hypercube.Utilities.csproj", "{366F802D-A79A-4155-B0BA-3DAF7D7416EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.GraphicsApi", "hypercube\src\Hypercube.GraphicsApi\Hypercube.GraphicsApi.csproj", "{D2F9CC73-5246-42BB-ACA1-D6BFB3089F75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.GraphicsApi", "..\hypercube\src\Hypercube.GraphicsApi\Hypercube.GraphicsApi.csproj", "{D2F9CC73-5246-42BB-ACA1-D6BFB3089F75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Graphics", "hypercube\src\Hypercube.Graphics\Hypercube.Graphics.csproj", "{C03170C9-67D8-4A5E-8C4E-0BCB4E646795}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Graphics", "..\hypercube\src\Hypercube.Graphics\Hypercube.Graphics.csproj", "{C03170C9-67D8-4A5E-8C4E-0BCB4E646795}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
