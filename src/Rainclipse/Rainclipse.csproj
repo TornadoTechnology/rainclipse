@@ -22,4 +22,9 @@
       <ProjectReference Include="..\..\hypercube\src\Hypercube.Mathematics\Hypercube.Mathematics.csproj" />
     </ItemGroup>
 
+
+    <ItemGroup>
+      <PackageReference Include="Hypercube.Utilities" Version="1.0.1" />
+    </ItemGroup>
+
 </Project>
