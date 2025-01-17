@@ -8,8 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rainclipse", "Rainclipse\Ra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Graphics", "..\hypercube\src\Hypercube.Graphics\Hypercube.Graphics.csproj", "{CB732207-ECDE-4EF0-AEDF-36D928604932}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.GraphicsApi", "..\hypercube\src\Hypercube.GraphicsApi\Hypercube.GraphicsApi.csproj", "{2DF59ADE-CDB0-4E0D-AE80-EDB6DC46647F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Resources", "..\hypercube\src\Hypercube.Resources\Hypercube.Resources.csproj", "{40B400DC-687B-44DF-8CC7-D0B51577913D}"
 EndProject
 Global
@@ -20,7 +18,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{87BC2483-833F-40A8-BA22-375D30D0A241} = {503A3A90-2FD0-4C64-BAF6-6AC2FAE9D5C0}
 		{CB732207-ECDE-4EF0-AEDF-36D928604932} = {503A3A90-2FD0-4C64-BAF6-6AC2FAE9D5C0}
-		{2DF59ADE-CDB0-4E0D-AE80-EDB6DC46647F} = {503A3A90-2FD0-4C64-BAF6-6AC2FAE9D5C0}
 		{40B400DC-687B-44DF-8CC7-D0B51577913D} = {503A3A90-2FD0-4C64-BAF6-6AC2FAE9D5C0}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
@@ -36,10 +33,6 @@ Global
 		{CB732207-ECDE-4EF0-AEDF-36D928604932}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB732207-ECDE-4EF0-AEDF-36D928604932}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB732207-ECDE-4EF0-AEDF-36D928604932}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2DF59ADE-CDB0-4E0D-AE80-EDB6DC46647F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2DF59ADE-CDB0-4E0D-AE80-EDB6DC46647F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2DF59ADE-CDB0-4E0D-AE80-EDB6DC46647F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2DF59ADE-CDB0-4E0D-AE80-EDB6DC46647F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{40B400DC-687B-44DF-8CC7-D0B51577913D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{40B400DC-687B-44DF-8CC7-D0B51577913D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40B400DC-687B-44DF-8CC7-D0B51577913D}.Release|Any CPU.ActiveCfg = Release|Any CPU

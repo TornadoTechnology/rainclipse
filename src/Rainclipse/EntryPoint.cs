@@ -1,5 +1,6 @@
 ﻿using Hypercube.Core.Execution.Attributes;
 using Hypercube.Core.Execution.Enums;
+using Hypercube.Graphics.Patching;
 using Hypercube.Utilities.Dependencies;
 
 namespace Rainclipse;
@@ -15,6 +16,9 @@ public static class EntryPoint
     [EntryPoint(EntryPointLevel.AfterInit)]
     public static void Start(DependenciesContainer container)
     {
-        // Hello!
+        var patchManager = container.Resolve<IPatchManager>();
+        var patch = new TestPatch();
+
+        patchManager.AddPatch(patch);
     }
 }
