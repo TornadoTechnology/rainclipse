@@ -17,14 +17,12 @@
 
 
     <ItemGroup>
-      <ProjectReference Include="..\..\hypercube\src\Hypercube.Analyzers\Hypercube.Analyzers.csproj" />
       <ProjectReference Include="..\..\hypercube\src\Hypercube.Core\Hypercube.Core.csproj" />
-      <ProjectReference Include="..\..\hypercube\src\Hypercube.Mathematics\Hypercube.Mathematics.csproj" />
     </ItemGroup>
 
 
     <ItemGroup>
-      <PackageReference Include="Hypercube.Utilities" Version="1.0.3" />
+      <PackageReference Include="Hypercube.Utilities" Version="1.0.4" />
     </ItemGroup>
 
 </Project>
