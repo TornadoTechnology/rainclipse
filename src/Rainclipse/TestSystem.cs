@@ -1,13 +1,19 @@
 ﻿using Hypercube.Core.Ecs;
 using Hypercube.Core.Ecs.Attributes;
 using Hypercube.Core.Ecs.Events;
-using Hypercube.Core.Ecs.Systems;
 
 namespace Rainclipse;
 
 [RegisterEntitySystem]
 public sealed class TestSystem : EntitySystem
 {
+    public override void Startup()
+    {
+        base.Startup();
+        
+        Logger.Debug("Test!");
+    }
+
     [Subscribe]
     public void OnAdded(Entity entity, TestComponent component, ref AddedEvent _)
     {

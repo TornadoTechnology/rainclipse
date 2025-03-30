@@ -4,6 +4,7 @@
         <OutputType>Exe</OutputType>
         <TargetFramework>net9.0</TargetFramework>
 
+        <AllowEngineCoreUsage>false</AllowEngineCoreUsage>
         <ApplicationIcon>icon.ico</ApplicationIcon>
         <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
         <ImplicitUsings>enable</ImplicitUsings>
@@ -11,13 +12,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="$(SolutionDir)../hypercube/libs/**" Link="%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" Visible="false" />
-        <None Include="$(SolutionDir)../hypercube/resources/**" Link="resources/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+        <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+            <_Parameter1>AllowEngineCoreUsage</_Parameter1>
+            <_Parameter2>$(AllowEngineCoreUsage)</_Parameter2>
+        </AssemblyAttribute>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="$(SolutionDir)hypercube/libs/**" Link="%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+        <None Include="$(SolutionDir)hypercube/resources/**" Link="resources/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" Visible="false" />
     </ItemGroup>
 
 
     <ItemGroup>
-      <ProjectReference Include="..\..\hypercube\src\Hypercube.Core\Hypercube.Core.csproj" />
+        <ProjectReference Include="..\..\hypercube\src\Hypercube.Analyzers\Hypercube.Analyzers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+        <ProjectReference Include="..\..\hypercube\src\Hypercube.Core\Hypercube.Core.csproj" />
     </ItemGroup>
 
 

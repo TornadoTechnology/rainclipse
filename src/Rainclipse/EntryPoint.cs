@@ -18,7 +18,6 @@ public static class EntryPoint
     {
         var patchManager = container.Resolve<IPatchManager>();
         var patch = new TestPatch();
-
         patchManager.AddPatch(patch);
     }
 }
