@@ -1,5 +1,8 @@
-﻿using Hypercube.Core.Execution.Attributes;
+﻿using Hypercube.Core.Ecs;
+using Hypercube.Core.Execution.Attributes;
 using Hypercube.Core.Execution.Enums;
+using Hypercube.Core.Systems.Rendering;
+using Hypercube.Core.Systems.Transform;
 using Hypercube.Graphics.Patching;
 using Hypercube.Utilities.Dependencies;
 
@@ -19,5 +22,10 @@ public static class EntryPoint
         var patchManager = container.Resolve<IPatchManager>();
         var patch = new TestPatch();
         patchManager.AddPatch(patch);
+
+        var world = container.Resolve<IEntitySystemManager>().Main;
+        var entity = world.CreateEntity();
+        world.AddComponent<TransformComponent>(entity);
+        world.AddComponent(entity, new SpriteComponent { Path = "/textures/default.png" });
     }
 }
