@@ -4,18 +4,12 @@ using Hypercube.Core.Ecs.Core.Query;
 using Hypercube.Core.Ecs.Events;
 using Hypercube.Core.Systems.Rendering;
 using Hypercube.Core.Systems.Transform;
-using Hypercube.Graphics.Resources;
-using Hypercube.Mathematics.Vectors;
-using Hypercube.Resources;
-using Hypercube.Utilities.Dependencies;
 
 namespace Rainclipse;
 
 [RegisterEntitySystem]
 public sealed class TestSystem : EntitySystem
 {
-    [Dependency] private readonly IResourceManager _resource = default!; 
-    
     private EntityQuery _testQuery = default!;
     
     public override void Startup()
