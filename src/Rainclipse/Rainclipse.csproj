@@ -4,7 +4,7 @@
         <OutputType>Exe</OutputType>
         <TargetFramework>net9.0</TargetFramework>
 
-        <AllowEngineCoreUsage>false</AllowEngineCoreUsage>
+        <AllowEngineCoreUsage>true</AllowEngineCoreUsage>
         <ApplicationIcon>icon.ico</ApplicationIcon>
         <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
         <ImplicitUsings>enable</ImplicitUsings>

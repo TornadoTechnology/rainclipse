@@ -21,11 +21,14 @@ public static class EntryPoint
     {
         var patchManager = container.Resolve<IPatchManager>();
         var patch = new TestPatch();
+        
+        container.Inject(patch);
         patchManager.AddPatch(patch);
 
         var world = container.Resolve<IEntitySystemManager>().Main;
         var entity = world.CreateEntity();
         world.AddComponent<TransformComponent>(entity);
+        world.AddComponent<TestComponent>(entity);
         world.AddComponent(entity, new SpriteComponent { Path = "/textures/default.png" });
     }
 }
