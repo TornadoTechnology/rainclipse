@@ -18,6 +18,8 @@ public sealed class TestPatch : Patch, IPostInject
     private Font _font = default!;
     private Model _model = default!;
     
+    private Vector3 _rotation = Vector3.Zero;
+    
     public void PostInject()
     {
         _font = _resource.Get<Font>("/fonts/OpenSans.ttf");
@@ -26,7 +28,9 @@ public sealed class TestPatch : Patch, IPostInject
 
     public override void Draw(IRenderContext renderer)
     {
+        _rotation = _rotation.WithX(_rotation.X + 0.01f);
+        
         renderer.DrawText(_render.BatchCount.ToString(), _font, new Vector2(-300, 200), Color.White, 1.5f);
-        renderer.DrawModel(_model, Vector3.Zero, Quaternion.FromEuler(Vector3.Zero), Vector3.One * 30, Color.White);
+        renderer.DrawModel(_model, Vector3.Zero, Quaternion.FromEuler(_rotation), Vector3.One * 30, Color.White);
     }
 }

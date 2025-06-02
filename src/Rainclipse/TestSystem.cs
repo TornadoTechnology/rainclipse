@@ -40,7 +40,6 @@ public sealed class TestSystem : EntitySystem
             var sprite = GetComponent<SpriteComponent>(entity);
 
             sprite.Rotation += deltaTime * 0.01f;
-            transform.LocalPosition += Vector2.UnitX * 0.0001f;
         }
     }
 
