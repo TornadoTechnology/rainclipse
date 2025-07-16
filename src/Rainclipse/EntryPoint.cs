@@ -1,9 +1,9 @@
 ﻿using Hypercube.Core.Ecs;
 using Hypercube.Core.Execution.Attributes;
 using Hypercube.Core.Execution.Enums;
+using Hypercube.Core.Graphics.Patching;
 using Hypercube.Core.Systems.Rendering;
 using Hypercube.Core.Systems.Transform;
-using Hypercube.Graphics.Patching;
 using Hypercube.Utilities.Dependencies;
 
 namespace Rainclipse;

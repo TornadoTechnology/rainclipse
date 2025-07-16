@@ -1,11 +1,11 @@
-﻿using Hypercube.Graphics.Patching;
-using Hypercube.Graphics.Rendering.Context;
-using Hypercube.Graphics.Rendering.Manager;
-using Hypercube.Graphics.Resources;
+﻿using Hypercube.Core.Graphics.Patching;
+using Hypercube.Core.Graphics.Rendering.Context;
+using Hypercube.Core.Graphics.Rendering.Manager;
+using Hypercube.Core.Graphics.Resources;
+using Hypercube.Core.Resources;
 using Hypercube.Mathematics;
 using Hypercube.Mathematics.Quaternions;
 using Hypercube.Mathematics.Vectors;
-using Hypercube.Resources;
 using Hypercube.Utilities.Dependencies;
 
 namespace Rainclipse;
