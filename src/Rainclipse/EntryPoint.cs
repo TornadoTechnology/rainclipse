@@ -4,6 +4,9 @@ using Hypercube.Core.Execution.Enums;
 using Hypercube.Core.Graphics.Patching;
 using Hypercube.Core.Systems.Rendering;
 using Hypercube.Core.Systems.Transform;
+using Hypercube.Mathematics;
+using Hypercube.Mathematics.Quaternions;
+using Hypercube.Mathematics.Vectors;
 using Hypercube.Utilities.Dependencies;
 
 namespace Rainclipse;

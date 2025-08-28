@@ -14,7 +14,7 @@ public sealed class TestPatch : Patch, IPostInject
 {
     [Dependency] private readonly IRenderManager _render = default!;
     [Dependency] private readonly IResourceManager _resource = default!;
-
+    
     private Font _font = default!;
     private Model _model = default!;
     private Texture _texture = default!;
@@ -28,14 +28,15 @@ public sealed class TestPatch : Patch, IPostInject
         _model = _resource.Get<Model>("/models/teapot.obj");
         _texture = _resource.Get<Texture>("/textures/default.png");
     }
-
+    
     public override void Draw(IRenderContext renderer)
     {
         _segments += 0.01f;
         _rotation = _rotation.WithX(_rotation.X + 0.01f);
         
         renderer.DrawText($"{_render.BatchCount} / {_render.VerticesCount}", _font, new Vector2(-300, 200), Color.White);
-        renderer.DrawCircle(new Vector2(100, 0), 50, Color.Beige, (int) _segments);
-        renderer.DrawModel(_model, Vector3.Zero, Quaternion.FromEuler(_rotation), Vector3.One * 30, Color.White, _texture);
+        renderer.DrawText($"{_render.Fps}", _font, new Vector2(-300, 150), Color.White);
+        //renderer.DrawCircle(new Vector2(100, 0), 50, Color.Beige, (int) _segments);
+        //renderer.DrawModel(_model, Vector3.Zero, Quaternion.FromEuler(_rotation), Vector3.One * 30, Color.White, _texture);
     }
 }

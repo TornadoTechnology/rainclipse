@@ -1,8 +1,11 @@
-﻿using Hypercube.Core.Ecs;
+﻿using Hypercube.Core.Audio.Manager;
+using Hypercube.Core.Audio.Resources;
+using Hypercube.Core.Ecs;
 using Hypercube.Core.Ecs.Attributes;
 using Hypercube.Core.Ecs.Core.Query;
 using Hypercube.Core.Ecs.Events;
 using Hypercube.Core.Input;
+using Hypercube.Core.Resources;
 using Hypercube.Core.Systems.Rendering;
 using Hypercube.Core.Systems.Transform;
 using Hypercube.Mathematics.Vectors;
@@ -14,6 +17,8 @@ namespace Rainclipse;
 public sealed class TestSystem : EntitySystem
 {
     [Dependency] private readonly IInputHandler _inputHandler = default!;
+    [Dependency] private readonly IResourceManager _resource = default!;
+    [Dependency] private readonly IAudioManager _audio = default!;
     
     private EntityQuery _testQuery = default!;
     
@@ -24,6 +29,10 @@ public sealed class TestSystem : EntitySystem
         _testQuery = EntityQueryBuilder
             .With<TestComponent>()
             .Build();
+
+        var sound = _resource.Get<Audio>("/audio/game_boi_3.wav");
+        var source = _audio.CreateSource(sound);
+        source.Start();
         
         Logger.Debug("Test!");
     }
@@ -36,7 +45,7 @@ public sealed class TestSystem : EntitySystem
         while (enumerator.MoveNext(out var entity))
         {
             var transform = GetComponent<TransformComponent>(entity);
-            var sprite = GetComponent<SpriteComponent>(entity);
+            var sprite =  GetComponent<SpriteComponent>(entity);
 
             if (_inputHandler.IsKeyHeld(Key.D))
                 transform.LocalPosition += Vector2.UnitX * deltaTime;
