@@ -10,23 +10,23 @@ using Hypercube.Utilities.Dependencies;
 
 namespace Rainclipse;
 
-public sealed class TestPatch : Patch, IPostInject
+public sealed class TestPatch : Patch
 {
     [Dependency] private readonly IRenderManager _render = default!;
     [Dependency] private readonly IResourceManager _resource = default!;
     
-    private Font _font = default!;
-    private Model _model = default!;
-    private Texture _texture = default!;
+    private readonly Font _font;
+    private readonly Model _model;
+    private readonly Texture _texture;
     
     private Vector3 _rotation = Vector3.Zero;
     private float _segments = 3;
-    
-    public void PostInject()
+
+    public TestPatch()
     {
-        _font = _resource.Get<Font>("/fonts/OpenSans.ttf");
-        _model = _resource.Get<Model>("/models/teapot.obj");
-        _texture = _resource.Get<Texture>("/textures/default.png");
+        _font = _resource.Load<Font>("/fonts/OpenSans.ttf", [("size", 16)]);
+        _model = _resource.Load<Model>("/models/teapot.obj");
+        _texture = _resource.Load<Texture>("/textures/default.png");
     }
     
     public override void Draw(IRenderContext renderer)
@@ -34,9 +34,9 @@ public sealed class TestPatch : Patch, IPostInject
         _segments += 0.01f;
         _rotation = _rotation.WithX(_rotation.X + 0.01f);
         
-        renderer.DrawText($"{_render.BatchCount} / {_render.VerticesCount}", _font, new Vector2(-300, 200), Color.White);
-        renderer.DrawText($"{_render.Fps}", _font, new Vector2(-300, 150), Color.White);
-        //renderer.DrawCircle(new Vector2(100, 0), 50, Color.Beige, (int) _segments);
-        //renderer.DrawModel(_model, Vector3.Zero, Quaternion.FromEuler(_rotation), Vector3.One * 30, Color.White, _texture);
+        renderer.DrawTexture(_font.Texture, Vector2.Zero, Angle.Zero, Vector2.One, Color.White);
+        renderer.DrawText($"{_render.BatchCount}\n{_render.VerticesCount}\n{_render.Fps}", _font, new Vector2(-300, 200), Color.White);
+        renderer.DrawCircle(new Vector2(100, 0), 50, Color.Beige, (int) _segments);
+        renderer.DrawModel(_model, Vector3.Zero, Quaternion.FromEuler(_rotation), Vector3.One * 30, Color.White, _texture);
     }
 }

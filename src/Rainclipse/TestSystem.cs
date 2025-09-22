@@ -30,9 +30,9 @@ public sealed class TestSystem : EntitySystem
             .With<TestComponent>()
             .Build();
 
-        var sound = _resource.Get<Audio>("/audio/game_boi_3.wav");
+        var sound = _resource.Load<Audio>("/audio/game_boi_3.wav");
         var source = _audio.CreateSource(sound);
-        source.Start();
+        // source.Start();
         
         Logger.Debug("Test!");
     }
