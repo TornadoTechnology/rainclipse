@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rainclipse", "src\Rainclips
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Analyzers", "hypercube\src\Hypercube.Analyzers\Hypercube.Analyzers.csproj", "{789A81C2-E8B0-437A-891D-D43F886A389F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Editor", "hypercube\src\Hypercube.Editor\Hypercube.Editor.csproj", "{5F2D857D-C3E0-4EE9-A98D-76A1F93DA7C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hypercube.Runner", "hypercube\src\Hypercube.Runner\Hypercube.Runner.csproj", "{46F2C789-6D48-4CC7-8618-F3D831E9B69B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,6 +20,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{87BC2483-833F-40A8-BA22-375D30D0A241} = {503A3A90-2FD0-4C64-BAF6-6AC2FAE9D5C0}
 		{789A81C2-E8B0-437A-891D-D43F886A389F} = {503A3A90-2FD0-4C64-BAF6-6AC2FAE9D5C0}
+		{5F2D857D-C3E0-4EE9-A98D-76A1F93DA7C9} = {503A3A90-2FD0-4C64-BAF6-6AC2FAE9D5C0}
+		{46F2C789-6D48-4CC7-8618-F3D831E9B69B} = {503A3A90-2FD0-4C64-BAF6-6AC2FAE9D5C0}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{87BC2483-833F-40A8-BA22-375D30D0A241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +36,13 @@ Global
 		{789A81C2-E8B0-437A-891D-D43F886A389F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{789A81C2-E8B0-437A-891D-D43F886A389F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{789A81C2-E8B0-437A-891D-D43F886A389F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F2D857D-C3E0-4EE9-A98D-76A1F93DA7C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F2D857D-C3E0-4EE9-A98D-76A1F93DA7C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F2D857D-C3E0-4EE9-A98D-76A1F93DA7C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F2D857D-C3E0-4EE9-A98D-76A1F93DA7C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46F2C789-6D48-4CC7-8618-F3D831E9B69B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F2C789-6D48-4CC7-8618-F3D831E9B69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F2C789-6D48-4CC7-8618-F3D831E9B69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F2C789-6D48-4CC7-8618-F3D831E9B69B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

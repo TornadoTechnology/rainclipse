@@ -31,7 +31,7 @@
 
 
     <ItemGroup>
-      <PackageReference Include="Hypercube.Utilities" Version="1.0.8" />
+      <PackageReference Include="Hypercube.Utilities" Version="1.1.2" />
     </ItemGroup>
 
 </Project>

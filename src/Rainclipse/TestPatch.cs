@@ -10,25 +10,25 @@ using Hypercube.Utilities.Dependencies;
 
 namespace Rainclipse;
 
-public sealed class TestPatch : Patch
+public sealed class TestPatch : Patch, IPostInject
 {
     [Dependency] private readonly IRenderManager _render = default!;
     [Dependency] private readonly IResourceManager _resource = default!;
     
-    private readonly Font _font;
-    private readonly Model _model;
-    private readonly Texture _texture;
+    private Font _font = default!;
+    private Model _model = default!;
+    private Texture _texture = default!;
     
     private Vector3 _rotation = Vector3.Zero;
     private float _segments = 3;
-
-    public TestPatch()
+    
+    public void OnPostInject()
     {
         _font = _resource.Load<Font>("/fonts/OpenSans.ttf", [("size", 16)]);
         _model = _resource.Load<Model>("/models/teapot.obj");
         _texture = _resource.Load<Texture>("/textures/default.png");
     }
-    
+
     public override void Draw(IRenderContext renderer)
     {
         _segments += 0.01f;
