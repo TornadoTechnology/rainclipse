@@ -45,8 +45,7 @@ public sealed class TestSystem : EntitySystem
         while (enumerator.MoveNext(out var entity))
         {
             var transform = GetComponent<TransformComponent>(entity);
-            var sprite =  GetComponent<SpriteComponent>(entity);
-
+            
             if (_inputHandler.IsKeyHeld(Key.D))
                 transform.LocalPosition += Vector2.UnitX * deltaTime;
 
