@@ -6,7 +6,6 @@ using Hypercube.Core.Ecs.Core.Query;
 using Hypercube.Core.Ecs.Events;
 using Hypercube.Core.Input;
 using Hypercube.Core.Resources;
-using Hypercube.Core.Systems.Rendering;
 using Hypercube.Core.Systems.Transform;
 using Hypercube.Mathematics.Vectors;
 using Hypercube.Utilities.Dependencies;
@@ -25,7 +24,7 @@ public sealed class TestSystem : EntitySystem
     public override void Startup()
     {
         base.Startup();
-        
+
         _testQuery = EntityQueryBuilder
             .With<TestComponent>()
             .Build();

@@ -4,6 +4,8 @@ using Hypercube.Core.Execution.Enums;
 using Hypercube.Core.Graphics.Patching;
 using Hypercube.Core.Systems.Rendering;
 using Hypercube.Core.Systems.Transform;
+using Hypercube.Core.Windowing.Manager;
+using Hypercube.Core.Windowing.Settings;
 using Hypercube.Utilities.Dependencies;
 
 namespace Rainclipse;
@@ -20,7 +22,7 @@ public static class EntryPoint
     public static void Start(DependenciesContainer container)
     {
         var patchManager = container.Resolve<IPatchManager>();
-        var patch = new TestPatch();
+        var patch = new HypercubePatch();
         
         container.Inject(patch);
         patchManager.AddPatch(patch);
