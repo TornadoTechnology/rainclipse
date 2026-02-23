@@ -22,16 +22,12 @@
         <None Include="$(SolutionDir)hypercube/libs/**" Link="%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" Visible="false" />
         <None Include="$(SolutionDir)hypercube/resources/**" Link="resources/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" Visible="false" />
     </ItemGroup>
-
-
+  
     <ItemGroup>
         <ProjectReference Include="..\..\hypercube\src\Hypercube.Analyzers\Hypercube.Analyzers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
         <ProjectReference Include="..\..\hypercube\src\Hypercube.Core\Hypercube.Core.csproj" />
-    </ItemGroup>
-
-
-    <ItemGroup>
-      <PackageReference Include="Hypercube.Utilities" Version="1.1.2" />
+        <ProjectReference Include="..\..\hypercube\submodules\mathematics\src\Hypercube.Mathematics\Hypercube.Mathematics.csproj" />
+        <ProjectReference Include="..\..\hypercube\submodules\utilities\src\Hypercube.Utilities\Hypercube.Utilities.csproj" />
     </ItemGroup>
 
 </Project>

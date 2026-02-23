@@ -22,7 +22,7 @@ public static class EntryPoint
     public static void Start(DependenciesContainer container)
     {
         var patchManager = container.Resolve<IPatchManager>();
-        var patch = new HypercubePatch();
+        var patch = new TestPatch();
         
         container.Inject(patch);
         patchManager.AddPatch(patch);
