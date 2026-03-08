@@ -1,5 +1,5 @@
-﻿using Hypercube.Core.Ecs;
+﻿using Hypercube.Ecs.Components;
 
 namespace Rainclipse;
 
-public sealed class TestComponent : Component;
+public struct TestComponent : IComponent;

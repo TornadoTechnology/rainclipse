@@ -4,6 +4,7 @@
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/hypercube" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/hypercube/submodules/ecs" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/hypercube/submodules/mathematics" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/hypercube/submodules/modloader" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/hypercube/submodules/utilities" vcs="Git" />

@@ -1,6 +1,4 @@
-﻿using Hypercube.Core.Ecs.Attributes;
-using Hypercube.Core.Ecs.Core.Query;
-using Hypercube.Core.Graphics.Rendering;
+﻿using Hypercube.Core.Graphics.Rendering;
 using Hypercube.Core.Graphics.Rendering.Context;
 using Hypercube.Core.Graphics.Resources;
 using Hypercube.Core.Resources;
@@ -8,12 +6,10 @@ using Hypercube.Core.Systems;
 using Hypercube.Core.Systems.Transform;
 using Hypercube.Mathematics;
 using Hypercube.Mathematics.Vectors;
-using Hypercube.Utilities.Debugging.Logger;
 using Hypercube.Utilities.Dependencies;
 
 namespace Rainclipse;
 
-[RegisterEntitySystem]
 public sealed class TestPathSystem : PatchEntitySystem
 {
     [Dependency] private readonly IResourceManager _resource = null!;

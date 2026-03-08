@@ -1,21 +1,19 @@
 ﻿using Hypercube.Core.Audio.Manager;
 using Hypercube.Core.Audio.Resources;
-using Hypercube.Core.Ecs;
-using Hypercube.Core.Ecs.Attributes;
-using Hypercube.Core.Ecs.Core.Query;
-using Hypercube.Core.Ecs.Events;
 using Hypercube.Core.Input;
 using Hypercube.Core.Input.Handler;
 using Hypercube.Core.Resources;
 using Hypercube.Core.Systems.Transform;
 using Hypercube.Core.Viewports;
+using Hypercube.Ecs;
+using Hypercube.Ecs.System;
 using Hypercube.Mathematics.Quaternions;
 using Hypercube.Mathematics.Vectors;
+using Hypercube.Utilities.Debugging.Logger;
 using Hypercube.Utilities.Dependencies;
 
 namespace Rainclipse;
 
-[RegisterEntitySystem]
 public sealed class TestSystem : EntitySystem
 {
     [Dependency] private readonly IAudioManager _audio = null!;
