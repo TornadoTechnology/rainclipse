@@ -5,11 +5,10 @@ using Hypercube.Core.Input.Handler;
 using Hypercube.Core.Resources;
 using Hypercube.Core.Systems.Transform;
 using Hypercube.Core.Viewports;
-using Hypercube.Ecs;
+using Hypercube.Ecs.Queries;
 using Hypercube.Ecs.System;
 using Hypercube.Mathematics.Quaternions;
 using Hypercube.Mathematics.Vectors;
-using Hypercube.Utilities.Debugging.Logger;
 using Hypercube.Utilities.Dependencies;
 
 namespace Rainclipse;
@@ -21,32 +20,26 @@ public sealed class TestSystem : EntitySystem
     [Dependency] private readonly IInputHandler _inputHandler = null!;
     [Dependency] private readonly IResourceManager _resource = null!;
 
-    private EntityQuery _testQuery = null!;
+    private Query _testQuery = null!;
     
-    public override void Startup()
+    public override void Initialize()
     {
-        base.Startup();
-
-        _testQuery = EntityQueryBuilder
-            .With<TestComponent>()
-            .Build();
+        _testQuery = CreateQuery(new QueryMeta()
+            .WithAll<TestComponent>()
+            .WithAll<TransformComponent>()
+        );
 
         var sound = _resource.Load<Audio>("/audio/game_boi_3.wav");
         var source = _audio.CreateSource(sound);
         // source.Start();
-        
-        Logger.Debug("Test!");
     }
 
     public override void Update(float deltaTime)
     {
         base.Update(deltaTime);
         
-        var enumerator = _testQuery.GetEnumerator;
-        while (enumerator.MoveNext(out var entity))
+        _testQuery.With<TransformComponent, TestComponent>((_, ref transform, ref _) =>
         {
-            var transform = GetComponent<TransformComponent>(entity);
-            
             var dt = deltaTime;
             if (_inputHandler.IsKeyHeld(Key.LeftShift))
                 dt /= 100;
@@ -70,12 +63,6 @@ public sealed class TestSystem : EntitySystem
                 transform.LocalRotation *= Quaternion.FromEulerZ(dt / 100);
             
             _camera.MainCamera.Position = _camera.MainCamera.Position.WithXy(transform.LocalPosition);
-        }
-    }
-
-    [Subscribe]
-    public void OnAdded(Entity entity, TestComponent component, ref AddedEvent _)
-    {
-        Logger.Debug($"{nameof(TestComponent)} added to {entity}");
+        });
     }
 }

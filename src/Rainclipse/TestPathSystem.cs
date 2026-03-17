@@ -4,6 +4,7 @@ using Hypercube.Core.Graphics.Resources;
 using Hypercube.Core.Resources;
 using Hypercube.Core.Systems;
 using Hypercube.Core.Systems.Transform;
+using Hypercube.Ecs.Queries;
 using Hypercube.Mathematics;
 using Hypercube.Mathematics.Vectors;
 using Hypercube.Utilities.Dependencies;
@@ -14,24 +15,19 @@ public sealed class TestPathSystem : PatchEntitySystem
 {
     [Dependency] private readonly IResourceManager _resource = null!;
     
-    private EntityQuery _spriteQuery = null!;
+    private Query _transformQuery = null!;
     private Font _font = null!;
 
-    public override void Startup()
+    public override void Initialize()
     {
-        base.Startup();
+        _transformQuery = CreateQuery(new QueryMeta().WithAll<TransformComponent>());
         
         _font = _resource.Load<Font>("/fonts/OpenSans.ttf", [("size", 24)]);
-        
-        _spriteQuery = EntityQueryBuilder
-            .With<TransformComponent>()
-            .Build();
     }
     
     public override void Draw(IRenderContext renderer, DrawPayload payload)
     {
-        var enumerator = _spriteQuery.GetEnumerator;
-        while (enumerator.MoveNext(out var entity))
+        _transformQuery.With<TransformComponent>((entity, ref transform) =>
         {
             var transformComponent = GetComponent<TransformComponent>(entity);
             var transformString = string.Empty;
@@ -43,6 +39,6 @@ public sealed class TestPathSystem : PatchEntitySystem
             
             var position = transformComponent.LocalPosition + new Vector2(32, 32);
             renderer.DrawText(transformString, _font, position.Xy, Color.White);
-        }
+        });
     }
 }

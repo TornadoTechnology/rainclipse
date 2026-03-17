@@ -4,21 +4,19 @@ using Hypercube.Core.Execution.Enums;
 using Hypercube.Core.Graphics.Patching;
 using Hypercube.Core.Systems.Rendering;
 using Hypercube.Core.Systems.Transform;
-using Hypercube.Core.Windowing.Manager;
-using Hypercube.Core.Windowing.Settings;
 using Hypercube.Utilities.Dependencies;
 
 namespace Rainclipse;
 
 public static class EntryPoint
 {
-    [EntryPoint(EntryPointLevel.BeforeInit)]
+    [EntryPoint(EntryPointStage.BeforeInit)]
     public static void Init(DependenciesContainer container)
     {
         // Init
     }
     
-    [EntryPoint(EntryPointLevel.AfterInit)]
+    [EntryPoint(EntryPointStage.AfterInit)]
     public static void Start(DependenciesContainer container)
     {
         var patchManager = container.Resolve<IPatchManager>();
@@ -27,10 +25,10 @@ public static class EntryPoint
         container.Inject(patch);
         patchManager.AddPatch(patch);
 
-        var world = container.Resolve<IEntitySystemManager>().Main;
-        var entity = world.CreateEntity();
-        world.AddComponent<TransformComponent>(entity);
-        world.AddComponent<TestComponent>(entity);
-        world.AddComponent(entity, new SpriteComponent { Path = "/textures/default.png" });
+        var world = container.Resolve<IEntitySystemManager>();
+        var entity = world.Create();
+        world.Add<TransformComponent>(entity);
+        world.Add<TestComponent>(entity);
+        world.Add(entity, new SpriteComponent { Path = "/textures/default.png" });
     }
 }
