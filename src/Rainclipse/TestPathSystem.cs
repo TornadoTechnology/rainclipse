@@ -20,7 +20,9 @@ public sealed class TestPathSystem : PatchEntitySystem
 
     public override void Initialize()
     {
-        _transformQuery = CreateQuery(new QueryMeta().WithAll<TransformComponent>());
+        _transformQuery = GetQuery()
+            .WithAll<TransformComponent>()
+            .Build();
         
         _font = _resource.Load<Font>("/fonts/OpenSans.ttf", [("size", 24)]);
     }
@@ -29,15 +31,12 @@ public sealed class TestPathSystem : PatchEntitySystem
     {
         _transformQuery.With<TransformComponent>((entity, ref transform) =>
         {
-            var transformComponent = GetComponent<TransformComponent>(entity);
             var transformString = string.Empty;
-
-            transformString += $"Pos: {transformComponent.LocalPosition}\r\n";
-            transformString += $"Rot: {transformComponent.LocalRotation} ({transformComponent.LocalRotation.ToEulerDeg()})\r\n";
-            transformString += $"Scl: {transformComponent.LocalScale}";
-
+            transformString += $"Pos: {transform.LocalPosition}\r\n";
+            transformString += $"Rot: {transform.LocalRotation} ({transform.LocalRotation.ToEulerDeg()})\r\n";
+            transformString += $"Scl: {transform.LocalScale}";
             
-            var position = transformComponent.LocalPosition + new Vector2(32, 32);
+            var position = transform.LocalPosition + new Vector2(32, 32);
             renderer.DrawText(transformString, _font, position.Xy, Color.White);
         });
     }

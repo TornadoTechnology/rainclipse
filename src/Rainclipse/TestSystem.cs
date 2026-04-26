@@ -1,18 +1,20 @@
 ﻿using Hypercube.Core.Audio.Manager;
 using Hypercube.Core.Audio.Resources;
+using Hypercube.Core.Ecs;
 using Hypercube.Core.Input;
 using Hypercube.Core.Input.Handler;
 using Hypercube.Core.Resources;
 using Hypercube.Core.Systems.Transform;
 using Hypercube.Core.Viewports;
 using Hypercube.Ecs.Queries;
-using Hypercube.Ecs.System;
 using Hypercube.Mathematics.Quaternions;
 using Hypercube.Mathematics.Vectors;
 using Hypercube.Utilities.Dependencies;
+using JetBrains.Annotations;
 
 namespace Rainclipse;
 
+[UsedImplicitly]
 public sealed class TestSystem : EntitySystem
 {
     [Dependency] private readonly IAudioManager _audio = null!;
@@ -21,23 +23,21 @@ public sealed class TestSystem : EntitySystem
     [Dependency] private readonly IResourceManager _resource = null!;
 
     private Query _testQuery = null!;
+    private Query _test2Query = null!;
     
     public override void Initialize()
     {
-        _testQuery = CreateQuery(new QueryMeta()
+        _testQuery = GetQuery()
+            .WithAll<TransformComponent, TestComponent, Test2Component>()
+            .Build();
+
+        _test2Query = GetQuery()
             .WithAll<TestComponent>()
-            .WithAll<TransformComponent>()
-        );
-
-        var sound = _resource.Load<Audio>("/audio/game_boi_3.wav");
-        var source = _audio.CreateSource(sound);
-        // source.Start();
+            .Build();
     }
-
+    
     public override void Update(float deltaTime)
     {
-        base.Update(deltaTime);
-        
         _testQuery.With<TransformComponent, TestComponent>((_, ref transform, ref _) =>
         {
             var dt = deltaTime;
@@ -63,6 +63,11 @@ public sealed class TestSystem : EntitySystem
                 transform.LocalRotation *= Quaternion.FromEulerZ(dt / 100);
             
             _camera.MainCamera.Position = _camera.MainCamera.Position.WithXy(transform.LocalPosition);
+        });
+        
+        _test2Query.With<TestComponent>((entity, ref _) =>
+        {
+            AddComponent<Test2Component>(entity);
         });
     }
 }

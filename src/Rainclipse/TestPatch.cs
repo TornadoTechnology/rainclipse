@@ -4,9 +4,11 @@ using Hypercube.Core.Graphics.Rendering;
 using Hypercube.Core.Graphics.Rendering.Context;
 using Hypercube.Core.Graphics.Rendering.Manager;
 using Hypercube.Core.Graphics.Resources;
+using Hypercube.Core.Input.Handler;
 using Hypercube.Core.Resources;
 using Hypercube.Core.Viewports;
 using Hypercube.Mathematics;
+using Hypercube.Mathematics.Matrices;
 using Hypercube.Mathematics.Vectors;
 using Hypercube.Utilities.Debugging.Logger;
 using Hypercube.Utilities.Dependencies;
@@ -19,6 +21,7 @@ public sealed class TestPatch : Patch, IPostInject
     
     [Dependency] private readonly IRenderManager _render = null!;
     [Dependency] private readonly IResourceManager _resource = null!;
+    [Dependency] private readonly IInputHandler _inputHandler = null!;
     [Dependency] private readonly ILogger _logger = null!;
     
     private Font _font = null!;
@@ -30,24 +33,36 @@ public sealed class TestPatch : Patch, IPostInject
 
     public override void Draw(IRenderContext renderer, DrawPayload payload)
     {
-        DrawCameraInfo(renderer, payload.Camera);
+        DrawCameraInfo(renderer, payload);
         DrawChunkGrid(renderer, payload.Camera);
     }
     
-    private void DrawCameraInfo(IRenderContext renderer, ICamera camera)
+    private void DrawCameraInfo(IRenderContext renderer, DrawPayload payload)
     {
         var cameraStringBuilder = new StringBuilder();
         
         cameraStringBuilder.AppendLine("Camera params");
-        cameraStringBuilder.AppendLine($" > Pos: {camera.Position}");
-        cameraStringBuilder.AppendLine($" > Rot: {camera.Rotation}");
-        cameraStringBuilder.AppendLine($" > Scl: {camera.Scale}");
-        cameraStringBuilder.AppendLine($" > Siz: {camera.Size}");
+        cameraStringBuilder.AppendLine($" > Pos: {payload.Camera.Position}");
+        cameraStringBuilder.AppendLine($" > Rot: {payload.Camera.Rotation}");
+        cameraStringBuilder.AppendLine($" > Scl: {payload.Camera.Scale}");
+        cameraStringBuilder.AppendLine($" > Siz: {payload.Camera.Size}");
+        cameraStringBuilder.AppendLine("Input");
+        cameraStringBuilder.AppendLine($" > Mouse Pos: {_inputHandler.MousePosition.ToString()}");
+        cameraStringBuilder.AppendLine("FPS");
+        cameraStringBuilder.AppendLine($" > Val: {_render.FrameCounter.Fps.ToString("0.###")}");
+        cameraStringBuilder.AppendLine($" > Avg: {_render.FrameCounter.AvgFps.ToString("0.###")}");
+        cameraStringBuilder.AppendLine($" > Min: {_render.FrameCounter.MinFps.ToString("0.###")}");
+        cameraStringBuilder.AppendLine($" > Max: {_render.FrameCounter.MaxFps.ToString("0.###")}");
         cameraStringBuilder.AppendLine("Graphics");
-        cameraStringBuilder.AppendLine($" > FPS: {_render.Fps.ToString("0.###")}");
+        cameraStringBuilder.AppendLine($" > Delta: {_render.FrameCounter.DeltaTime.ToString("0.###")}");
+        cameraStringBuilder.AppendLine($" > FrmTm: {_render.FrameCounter.FrameTimeMs.ToString("0.###")}");
+        cameraStringBuilder.AppendLine($" > Batching: {_render.BatchCount}");
+        cameraStringBuilder.AppendLine($" > Vertices: {_render.VerticesCount}");
 
-
-        renderer.DrawText(cameraStringBuilder.ToString(), _font, camera.Position.Xy - new Vector2(camera.Size.X, -camera.Size.Y) / 2f - Vector2.UnitY * 18f, Color.White);
+        using (renderer.UseRenderState(payload.Window))
+        {
+            renderer.DrawText(cameraStringBuilder.ToString(), _font, new Vector2(0, -16), Color.White);
+        }
     }
     
     private void DrawChunkGrid(IRenderContext renderer, ICamera camera)
