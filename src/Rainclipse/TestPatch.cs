@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Hypercube.Core.Execution.Timing;
 using Hypercube.Core.Graphics.Patching;
 using Hypercube.Core.Graphics.Rendering;
 using Hypercube.Core.Graphics.Rendering.Context;
@@ -6,6 +7,7 @@ using Hypercube.Core.Graphics.Rendering.Manager;
 using Hypercube.Core.Graphics.Resources;
 using Hypercube.Core.Input.Handler;
 using Hypercube.Core.Resources;
+using Hypercube.Core.UI;
 using Hypercube.Core.Viewports;
 using Hypercube.Mathematics;
 using Hypercube.Mathematics.Matrices;
@@ -22,7 +24,9 @@ public sealed class TestPatch : Patch, IPostInject
     [Dependency] private readonly IRenderManager _render = null!;
     [Dependency] private readonly IResourceManager _resource = null!;
     [Dependency] private readonly IInputHandler _inputHandler = null!;
+    [Dependency] private readonly IUIManager _uiManager = null!;
     [Dependency] private readonly ILogger _logger = null!;
+    [Dependency] private readonly ITime _time = null!;
     
     private Font _font = null!;
     
@@ -48,6 +52,7 @@ public sealed class TestPatch : Patch, IPostInject
         cameraStringBuilder.AppendLine($" > Siz: {payload.Camera.Size}");
         cameraStringBuilder.AppendLine("Input");
         cameraStringBuilder.AppendLine($" > Mouse Pos: {_inputHandler.MousePosition.ToString()}");
+        cameraStringBuilder.AppendLine($" > UI Mouse Pos: {_uiManager.MousePosition.ToString()}");
         cameraStringBuilder.AppendLine("FPS");
         cameraStringBuilder.AppendLine($" > Val: {_render.FrameCounter.Fps.ToString("0.###")}");
         cameraStringBuilder.AppendLine($" > Avg: {_render.FrameCounter.AvgFps.ToString("0.###")}");
@@ -58,10 +63,12 @@ public sealed class TestPatch : Patch, IPostInject
         cameraStringBuilder.AppendLine($" > FrmTm: {_render.FrameCounter.FrameTimeMs.ToString("0.###")}");
         cameraStringBuilder.AppendLine($" > Batching: {_render.BatchCount}");
         cameraStringBuilder.AppendLine($" > Vertices: {_render.VerticesCount}");
-
+        cameraStringBuilder.AppendLine("Time");
+        cameraStringBuilder.AppendLine($" > Dt: {_time.Delta.Milliseconds}");
+        
         using (renderer.UseRenderState(payload.Window))
         {
-            renderer.DrawText(cameraStringBuilder.ToString(), _font, new Vector2(0, -16), Color.White);
+            renderer.DrawText(cameraStringBuilder.ToString(), _font, new Vector2(0, payload.Camera.Size.Y - 18), Color.White);
         }
     }
     

@@ -11,9 +11,11 @@ using Hypercube.Core.Systems.Rendering;
 using Hypercube.Core.Systems.Transform;
 using Hypercube.Core.UI;
 using Hypercube.Core.UI.Elements;
+using Hypercube.Core.UI.Elements.Buttons;
 using Hypercube.Core.Viewports;
 using Hypercube.Core.Windowing.Manager;
 using Hypercube.Mathematics;
+using Hypercube.Mathematics.Dimensions;
 using Hypercube.Mathematics.Shapes;
 using Hypercube.Mathematics.Vectors;
 using Hypercube.Utilities.Debugging.Logger;
@@ -66,30 +68,42 @@ public static class EntryPoint
         var sound = resourceManager.Load<Audio>("/audio/game_boi_3.wav");
         var source = audio.CreateSource(sound);
 
-        var button = new Button
+
+        var uiRect = new Rectangle
         {
-            Text = "Play",
-            MinSize =  new Vector2(100, 100),
+            AnchorPoint = Vector2.Half,
+            Position = new HDim2(0.5f, 0, 0.5f, 0),
+            Size = new HDim2(0.5f, 0, 0.5f, 0),
+            Color = new Color("#77e36d55")
+        };
+
+        uiManager.Root.AddChild(uiRect);
+
+        var uiRect2 = new ButonLabel
+        {
+            AnchorPoint = Vector2.Half,
+            Position = new HDim2(0.5f, 0, 0.5f, 0),
+            Size = new HDim2(0, 100, 0, 100),
         };
         
-        button.Arrange(Rect2.FromCenter(new Vector2(200, -200), button.Size));
+        uiRect.AddChild(uiRect2);
+        
+        uiRect2.Fill.Color = new Color("#22e36d55");
 
-        button.OnClick += _ =>
+        uiRect2.Label.DrawDebugRect = true;
+        uiRect2.Label.FontSize = 12;
+        uiRect2.Label.Text = "Играть крутой музон";
+        
+        uiRect2.OnClicked += () =>
         {
             if (source.Playing)
             {
                 source.Stop();
-                button.Text = "Play";
-                logger.Debug("Audio stopped");
                 return;
             }
-
+            
             source.Start();
-            button.Text = "Stop";
-            logger.Debug("Audio started");
         };
-
-        uiManager.Root.AddChild(button);
     }
     
     public static async Task RecordAndPlayAsync(IAudioManager audio, ILogger logger)

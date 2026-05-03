@@ -1,6 +1,7 @@
 ﻿using Hypercube.Core.Audio.Manager;
 using Hypercube.Core.Audio.Resources;
 using Hypercube.Core.Ecs;
+using Hypercube.Core.Execution.LifeCycle;
 using Hypercube.Core.Input;
 using Hypercube.Core.Input.Handler;
 using Hypercube.Core.Resources;
@@ -36,11 +37,17 @@ public sealed class TestSystem : EntitySystem
             .Build();
     }
     
-    public override void Update(float deltaTime)
+    public override void Update(FrameEventArgs args)
     {
+        if (_inputHandler.IsKeyPressed(Key.G))
+            Logger.Trace("Pressed G");
+        
+        if (_inputHandler.IsKeyReleased(Key.G))
+            Logger.Trace("Released G");
+        
         _testQuery.With<TransformComponent, TestComponent>((_, ref transform, ref _) =>
         {
-            var dt = deltaTime;
+            var dt = (float) args.Delta.TotalMilliseconds;
             if (_inputHandler.IsKeyHeld(Key.LeftShift))
                 dt /= 100;
                 
