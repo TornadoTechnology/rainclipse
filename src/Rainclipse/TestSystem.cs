@@ -23,29 +23,11 @@ public sealed class TestSystem : EntitySystem
     [Dependency] private readonly IInputHandler _inputHandler = null!;
     [Dependency] private readonly IResourceManager _resource = null!;
 
-    private Query _testQuery = null!;
-    private Query _test2Query = null!;
+    private readonly QueryMeta _query = new QueryMeta().WithAll<TransformComponent, TestComponent>();
     
-    public override void Initialize()
+    public override void BeforeUpdate(FrameEventArgs args)
     {
-        _testQuery = GetQuery()
-            .WithAll<TransformComponent, TestComponent, Test2Component>()
-            .Build();
-
-        _test2Query = GetQuery()
-            .WithAll<TestComponent>()
-            .Build();
-    }
-    
-    public override void Update(FrameEventArgs args)
-    {
-        if (_inputHandler.IsKeyPressed(Key.G))
-            Logger.Trace("Pressed G");
-        
-        if (_inputHandler.IsKeyReleased(Key.G))
-            Logger.Trace("Released G");
-        
-        _testQuery.With<TransformComponent, TestComponent>((_, ref transform, ref _) =>
+        Query(_query).With<TransformComponent, TestComponent>((_, ref transform, ref _) =>
         {
             var dt = (float) args.Delta.TotalMilliseconds;
             if (_inputHandler.IsKeyHeld(Key.LeftShift))
@@ -70,11 +52,6 @@ public sealed class TestSystem : EntitySystem
                 transform.LocalRotation *= Quaternion.FromEulerZ(dt / 100);
             
             _camera.MainCamera.Position = _camera.MainCamera.Position.WithXy(transform.LocalPosition);
-        });
-        
-        _test2Query.With<TestComponent>((entity, ref _) =>
-        {
-            AddComponent<Test2Component>(entity);
         });
     }
 }

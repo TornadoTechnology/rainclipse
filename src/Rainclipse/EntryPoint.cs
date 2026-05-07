@@ -18,6 +18,8 @@ using Hypercube.Mathematics;
 using Hypercube.Mathematics.Dimensions;
 using Hypercube.Mathematics.Shapes;
 using Hypercube.Mathematics.Vectors;
+using Hypercube.Physics.Shapes;
+using Hypercube.Physics.Shapes.Structs;
 using Hypercube.Utilities.Debugging.Logger;
 using Hypercube.Utilities.Dependencies;
 
@@ -64,16 +66,26 @@ public static class EntryPoint
         world.Add<TestComponent>(entity);
         world.Add<TransformComponent>(entity);
         world.Add(entity, new SpriteComponent { Path = "/textures/default.png" });
+        world.Add(entity, new PhysicsTestComponent
+        {
+            Fixture = new ShapeUnionTyped
+            {
+                Type = ShapeType.Polygon,
+                Shape = new ShapeUnion
+                {
+                    Polygon = ShapePolygon.CreateSquare(16f),
+                }
+            },
+        });
         
         var sound = resourceManager.Load<Audio>("/audio/game_boi_3.wav");
         var source = audio.CreateSource(sound);
-
-
+        
         var uiRect = new Rectangle
         {
-            AnchorPoint = Vector2.Half,
-            Position = new HDim2(0.5f, 0, 0.5f, 0),
-            Size = new HDim2(0.5f, 0, 0.5f, 0),
+            AnchorPoint = new Vector2(1, 0.5f),
+            Position = new HDim2(1, 0, 0.5f, 0),
+            Size = new HDim2(0.2f, 0, 1, 0),
             Color = new Color("#77e36d55")
         };
 
@@ -81,9 +93,9 @@ public static class EntryPoint
 
         var uiRect2 = new ButonLabel
         {
-            AnchorPoint = Vector2.Half,
-            Position = new HDim2(0.5f, 0, 0.5f, 0),
-            Size = new HDim2(0, 100, 0, 100),
+            AnchorPoint = new Vector2(0, 0.5f),
+            Position = new HDim2(0.05f, 0, 0.95f, 0),
+            Size = new HDim2(0.9f, 0, 0.05f, 0),
         };
         
         uiRect.AddChild(uiRect2);
