@@ -5,6 +5,7 @@ using Hypercube.Core.Systems.Transform;
 using Hypercube.Ecs;
 using Hypercube.Ecs.Components;
 using Hypercube.Ecs.Queries;
+using Hypercube.Mathematics;
 using Hypercube.Physics;
 using Hypercube.Physics.Shapes;
 using Hypercube.Physics.Shapes.Structs;
@@ -74,8 +75,8 @@ public sealed class StressTestSystem : EntitySystem
         ref var physicsA = ref GetComponent<PhysicsTestComponent>(entityA);
         ref var physicsB = ref GetComponent<PhysicsTestComponent>(entityB);
         
-        var physTransformA = new Transform(transformA.LocalPosition.Xy);
-        var physTransformB = new Transform(transformB.LocalPosition.Xy);
+        var physTransformA = new Transform(transformA.LocalPosition.Xy, transformA.LocalRotation.ToEuler().Z * HyperMath.DegreesToRadiansF);
+        var physTransformB = new Transform(transformB.LocalPosition.Xy, transformA.LocalRotation.ToEuler().Z * HyperMath.DegreesToRadiansF);
         
         var manifold = Contacts.Resolve(physicsA.Fixture, physTransformA, physicsB.Fixture, physTransformB);
         if (manifold.IsEmpty)

@@ -8,6 +8,7 @@ using Hypercube.Core.Graphics.Resources;
 using Hypercube.Core.Input.Handler;
 using Hypercube.Core.Resources;
 using Hypercube.Core.UI;
+using Hypercube.Core.UI.Manager;
 using Hypercube.Core.Viewports;
 using Hypercube.Mathematics;
 using Hypercube.Mathematics.Matrices;

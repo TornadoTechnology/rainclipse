@@ -12,6 +12,7 @@ using Hypercube.Core.Systems.Transform;
 using Hypercube.Core.UI;
 using Hypercube.Core.UI.Elements;
 using Hypercube.Core.UI.Elements.Buttons;
+using Hypercube.Core.UI.Manager;
 using Hypercube.Core.Viewports;
 using Hypercube.Core.Windowing.Manager;
 using Hypercube.Mathematics;
@@ -81,41 +82,7 @@ public static class EntryPoint
         var sound = resourceManager.Load<Audio>("/audio/game_boi_3.wav");
         var source = audio.CreateSource(sound);
         
-        var uiRect = new Rectangle
-        {
-            AnchorPoint = new Vector2(1, 0.5f),
-            Position = new HDim2(1, 0, 0.5f, 0),
-            Size = new HDim2(0.2f, 0, 1, 0),
-            Color = new Color("#77e36d55")
-        };
-
-        uiManager.Root.AddChild(uiRect);
-
-        var uiRect2 = new ButonLabel
-        {
-            AnchorPoint = new Vector2(0, 0.5f),
-            Position = new HDim2(0.05f, 0, 0.95f, 0),
-            Size = new HDim2(0.9f, 0, 0.05f, 0),
-        };
-        
-        uiRect.AddChild(uiRect2);
-        
-        uiRect2.Fill.Color = new Color("#22e36d55");
-
-        uiRect2.Label.DrawDebugRect = true;
-        uiRect2.Label.FontSize = 12;
-        uiRect2.Label.Text = "Играть крутой музон";
-        
-        uiRect2.OnClicked += () =>
-        {
-            if (source.Playing)
-            {
-                source.Stop();
-                return;
-            }
-            
-            source.Start();
-        };
+        TestUI.CreateUI(uiManager);
     }
     
     public static async Task RecordAndPlayAsync(IAudioManager audio, ILogger logger)
