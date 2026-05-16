@@ -36,7 +36,7 @@ public static class TestUI
         {
             var button = container.AddChild(new ButonRect
             {
-                Size = new HDim2(1.2f, 0, 0, 50),
+                Size = new HDim2(1.0f, 0, 0, 50),
             });
 
             button.Fill.Color = i switch

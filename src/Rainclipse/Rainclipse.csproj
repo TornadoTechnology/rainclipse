@@ -9,6 +9,7 @@
         <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <NoWarn>HUA0001</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
