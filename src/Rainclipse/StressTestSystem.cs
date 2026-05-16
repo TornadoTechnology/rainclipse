@@ -7,6 +7,8 @@ using Hypercube.Ecs.Components;
 using Hypercube.Ecs.Queries;
 using Hypercube.Mathematics;
 using Hypercube.Physics;
+using Hypercube.Physics.Collision;
+using Hypercube.Physics.Mathematics;
 using Hypercube.Physics.Shapes;
 using Hypercube.Physics.Shapes.Structs;
 

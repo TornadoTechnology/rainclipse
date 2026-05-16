@@ -18,23 +18,25 @@ public static class TestUI
             AnchorPoint = new Vector2(1, 0.5f),
             Position = new HDim2(1, 0, 0.5f, 0),
             Size = new HDim2(0.2f, 0, 1, 0),
-            Color = new Color("#77e36d55")
+            Color = new Color("#77e36d55"),
         });
         
-        var container = root.AddChild(new VContainer
+        var container = root.AddChild(new LayoutContainer
         {
+            Orientation = Orientation.Vertical,
             Position = HDim2.Zero,
             Size = HDim2.ScalarOne,
             Spacing = new HDim(0, 16),
-            Alignment = Alignment.End,
-            AlignmentOpposite = Alignment.Center
+            VAlignment = Alignment.SpaceBetween,
+            HAlignment = Alignment.Center,
+            Padding = HDimRect.All(new HDim(0, 16)),
         });
 
         for (var i = 0; i < 6; i++)
         {
             var button = container.AddChild(new ButonRect
             {
-                Size = new HDim2(0.95f, 0, 0, 50),
+                Size = new HDim2(1.2f, 0, 0, 50),
             });
 
             button.Fill.Color = i switch

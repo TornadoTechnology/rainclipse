@@ -12,6 +12,7 @@ using Hypercube.Core.UI.Manager;
 using Hypercube.Core.Viewports;
 using Hypercube.Mathematics;
 using Hypercube.Mathematics.Matrices;
+using Hypercube.Mathematics.Shapes;
 using Hypercube.Mathematics.Vectors;
 using Hypercube.Utilities.Debugging.Logger;
 using Hypercube.Utilities.Dependencies;
